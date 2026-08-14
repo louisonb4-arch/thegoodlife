@@ -1,0 +1,171 @@
+/* Hero — la vitrine : lettrage peint qui chevauche la photo */
+.hero {
+  position: relative;
+  background: var(--vert);
+  color: var(--creme);
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;
+  overflow: hidden;
+}
+
+.hero__stage {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+/* ---- Lockup ---- */
+.hero__top {
+  padding: clamp(6rem, 15vw, 8rem) var(--gutter) 0;
+  position: relative;
+  z-index: 2;
+}
+
+.hero__lockup {
+  font-weight: 400;
+  line-height: 1;
+}
+
+.hero__word { display: block; width: fit-content; }
+
+.hero__word--the,
+.hero__word--life {
+  font-family: var(--f-script);
+  font-size: clamp(3rem, 12vw, 6.2rem);
+  rotate: -5deg;
+  line-height: 1.3;
+}
+.hero__word--the { margin-left: .15em; }
+
+.hero__word--good {
+  font-family: var(--f-caps);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  font-size: clamp(4.6rem, 21vw, 13rem);
+  line-height: 1.02;
+  margin-block: .02em;
+}
+/* ombre d'enseigne peinte */
+.hero__word--good > span {
+  text-shadow: .045em .05em 0 rgba(190, 138, 62, .55);
+}
+
+.hero__word--life { margin-left: 1.15em; margin-top: -.08em; }
+/* lisibilité quand le mot passe sur la photo (mobile) */
+.hero__word--life > span { text-shadow: 0 2px 18px rgba(0, 0, 0, .35); }
+
+/* Ordre de la cascade d'ouverture */
+.hero__word--the  { --self-delay: 0ms; }
+.hero__word--good { --self-delay: 140ms; }
+.hero__word--life { --self-delay: 280ms; }
+.hero__line       { --self-delay: 520ms; }
+.hero__pitch      { --self-delay: 600ms; }
+.hero__meta       { --self-delay: 700ms; }
+.hero__photo img  { --self-delay: 420ms; }
+.hero__marquee    { --self-delay: 900ms; }
+
+/* ---- Photo — le lockup déborde dessus ---- */
+.hero__photo {
+  position: relative;
+  z-index: 1;
+  margin: -2.6rem var(--gutter) 0;
+}
+.hero__photo img {
+  border-radius: 8px;
+  --radius: 8px;
+  width: 100%;
+  max-height: 46svh;
+  object-fit: cover;
+  object-position: center 30%;
+}
+
+/* ---- Pied ---- */
+.hero__foot {
+  position: relative;
+  z-index: 2;
+  padding: 1.6rem var(--gutter) 1.8rem;
+  margin-top: auto;
+}
+.hero__line {
+  max-width: 30rem;
+  opacity: .35;
+  margin-bottom: 1rem;
+}
+.hero__pitch {
+  max-width: 26rem;
+  font-size: 1rem;
+  opacity: .9;
+}
+.hero__meta {
+  margin-top: 1.4rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem 3rem;
+}
+.hero__meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: .25rem;
+  font-size: .95rem;
+}
+.hero__meta-item .label { color: var(--miel); }
+
+/* ---- Enseigne défilante ---- */
+.hero__marquee {
+  border-top: 1px solid rgba(245, 239, 226, .18);
+  padding-block: .85rem;
+  font-size: .8rem;
+}
+
+/* ---- Soubassement — panneaux bois de la devanture ---- */
+.hero__soubassement {
+  height: 3.2rem;
+  background:
+    repeating-linear-gradient(90deg,
+      transparent 0, transparent calc(25% - 2px),
+      rgba(30, 58, 48, .5) calc(25% - 2px), rgba(30, 58, 48, .5) 25%),
+    var(--sauge);
+  border-top: 6px solid var(--vert-2);
+}
+
+/* ---- Desktop : photo colonne droite, lockup à cheval ---- */
+@media (min-width: 900px) {
+  .hero__stage {
+    position: relative;
+    min-height: calc(100svh - 8.5rem);
+  }
+
+  .hero__photo {
+    position: absolute;
+    top: 0; right: 0; bottom: 0;
+    width: 42%;
+    margin: 0;
+    z-index: 1;
+  }
+  .hero__photo img {
+    height: 100%;
+    max-height: none;
+    border-radius: 0;
+    --radius: 0px;
+    object-position: center;
+  }
+
+  .hero__top {
+    padding: 8.5rem var(--gutter) 0;
+    width: 100%;
+  }
+  .hero__lockup { white-space: nowrap; }
+  .hero__word--the  { font-size: 4.6rem; }
+  .hero__word--life { font-size: 4.6rem; margin-left: 1.7em; margin-top: -.15em; }
+  .hero__word--good { font-size: clamp(7.5rem, 12.5vw, 11rem); letter-spacing: .12em; }
+
+  .hero__foot {
+    width: 58%;
+    padding: 2.4rem var(--gutter) 2.6rem;
+  }
+
+  .hero__marquee { font-size: .85rem; }
+  .hero__soubassement { height: 3.6rem; }
+}

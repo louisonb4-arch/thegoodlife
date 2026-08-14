@@ -1,0 +1,132 @@
+/* Le comptoir — le ticket de caisse s'imprime */
+.comptoir {
+  background: var(--vert);
+  color: var(--creme);
+}
+.comptoir .section__head .label { color: var(--miel); }
+.comptoir .h-section .script { color: var(--miel); }
+
+.comptoir__grid {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+/* ---- Le ticket ---- */
+.comptoir__ticket-zone {
+  display: flex;
+  justify-content: center;
+}
+
+.ticket {
+  --ticket-bg: #FBF7EA;
+  position: relative;
+  background: var(--ticket-bg);
+  color: var(--encre);
+  width: min(23rem, 100%);
+  padding: 2.2rem 1.7rem 2.4rem;
+  rotate: -1.6deg;
+  box-shadow: 0 22px 50px rgba(0, 0, 0, .32);
+  font-size: .95rem;
+}
+/* bords perforés */
+.ticket::before,
+.ticket::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0;
+  height: 10px;
+  background: conic-gradient(from 135deg at 50% 0, var(--ticket-bg) 90deg, #0000 0) 0 0 / 20px 10px repeat-x;
+}
+.ticket::before {
+  bottom: 100%;
+  rotate: 180deg;
+}
+.ticket::after { top: 100%; }
+
+/* impression : révélation lente du haut vers le bas */
+html.--js-inview-enabled .ticket[data-reveal="clip"] {
+  --radius: 0px;
+  animation-duration: 1700ms;
+  animation-timing-function: var(--ease-io);
+}
+
+.ticket__brand {
+  text-align: center;
+  font-size: 1.7rem;
+  color: var(--vert);
+  rotate: -2deg;
+}
+.ticket__meta {
+  margin-top: .9rem;
+  text-align: center;
+  line-height: 1.9;
+  opacity: .7;
+}
+
+.ticket__rule {
+  display: block;
+  border-top: 1px dashed rgba(36, 31, 22, .4);
+  margin-block: 1.2rem;
+}
+
+.ticket__cat {
+  text-align: center;
+  color: var(--miel);
+  margin-bottom: .8rem;
+}
+.ticket__cat:not(:first-of-type) { margin-top: 1.4rem; }
+
+.ticket__list li {
+  display: flex;
+  align-items: baseline;
+  gap: .7rem;
+  padding-block: .3rem;
+  font-family: var(--f-caps);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: .09em;
+  font-size: .82rem;
+}
+.ticket__dots {
+  flex: 1;
+  border-bottom: 1px dotted rgba(36, 31, 22, .45);
+  translate: 0 -.22em;
+}
+
+.ticket__note {
+  text-align: center;
+  font-style: italic;
+  font-size: .9rem;
+  opacity: .75;
+}
+
+.ticket__merci {
+  margin-top: 1.4rem;
+  text-align: center;
+  font-size: 1.45rem;
+  color: var(--miel);
+  rotate: -3deg;
+}
+
+/* ---- Aparté photo + grande table ---- */
+.comptoir__table-note {
+  margin-top: 1.2rem;
+  font-style: italic;
+  opacity: .88;
+  max-width: 28rem;
+}
+
+@media (min-width: 900px) {
+  .comptoir__grid {
+    flex-direction: row;
+    gap: 6rem;
+    align-items: flex-start;
+  }
+  .comptoir__ticket-zone {
+    width: 44%;
+    justify-content: flex-end;
+    padding-top: 1.5rem;
+  }
+  .comptoir__aside { width: 56%; }
+}

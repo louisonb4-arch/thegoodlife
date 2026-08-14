@@ -1,0 +1,63 @@
+/* Marquee — enseigne défilante */
+.marquee {
+  overflow: hidden;
+  user-select: none;
+}
+
+.marquee__track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 32s linear infinite;
+}
+.marquee__track--reverse {
+  animation-name: marquee-scroll-reverse;
+  animation-duration: 44s;
+}
+
+.marquee__seq {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.marquee__item {
+  padding-inline: 1.6rem;
+  white-space: nowrap;
+}
+.marquee__item--script {
+  font-size: 1.15em;
+  rotate: -3deg;
+  color: var(--miel);
+}
+
+.marquee__dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: .4;
+  flex-shrink: 0;
+}
+
+@keyframes marquee-scroll         { to { translate: -50% 0; } }
+@keyframes marquee-scroll-reverse { from { translate: -50% 0; } to { translate: 0 0; } }
+
+/* Variante seuil — grand serif italique sur crème */
+.marquee--seuil {
+  background: var(--creme);
+  color: var(--encre);
+  border-block: 1px solid rgba(36, 31, 22, .16);
+  padding-block: 1.1rem;
+}
+.marquee--seuil .marquee__item--serif {
+  font-family: var(--f-body);
+  font-style: italic;
+  font-size: clamp(1.9rem, 5.5vw, 3.2rem);
+  line-height: 1.2;
+  padding-inline: 2rem;
+}
+.marquee--seuil .marquee__dot { background: var(--miel); opacity: .8; }
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee__track { animation: none !important; }
+}

@@ -1,0 +1,55 @@
+/* Interlude — diptyque décalé, légendes manuscrites */
+.interlude {
+  background: var(--creme-2);
+  padding-block: clamp(4rem, 10vw, 7rem);
+}
+
+.interlude__grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* débord interne pour la parallaxe — jamais de scale */
+.interlude__photo {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1206 / 1480;
+}
+.interlude__photo img {
+  position: absolute;
+  top: -34px;
+  left: 0;
+  width: 100%;
+  height: calc(100% + 68px);
+  object-fit: cover;
+}
+
+.interlude__caption {
+  position: absolute;
+  left: 1rem;
+  bottom: .9rem;
+  z-index: 2;
+  color: var(--creme);
+  font-size: 1.15rem;
+  rotate: -4deg;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, .55);
+}
+.interlude__caption--right {
+  left: auto;
+  right: 1rem;
+  rotate: 3deg;
+}
+
+@media (min-width: 900px) {
+  .interlude__grid {
+    flex-direction: row;
+    gap: 4.5rem;
+    align-items: flex-start;
+  }
+  .interlude__photo { width: 50%; }
+  .interlude__photo--decale {
+    margin-top: 6rem;
+    --self-delay: 180ms;
+  }
+}

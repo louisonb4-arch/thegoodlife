@@ -1,0 +1,86 @@
+/* Loader — le lettrage de la vitrine se compose sur le verre vert */
+.site-loader {
+  position: fixed;
+  inset: 0;
+  height: 100lvh;
+  z-index: 999;
+  background: var(--vert);
+  display: grid;
+  place-items: center;
+  opacity: 1;
+  will-change: opacity;
+}
+.site-loader.--js-ready {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 350ms linear;
+}
+
+.site-loader__lockup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--creme);
+  text-align: center;
+}
+
+.site-loader__word {
+  display: block;
+  overflow: hidden;
+  line-height: 1.15;
+}
+.site-loader__inner {
+  display: block;
+  translate: 0 110%;
+  animation: loader-up 700ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.site-loader__word--script {
+  font-family: var(--f-script);
+  font-size: clamp(2.4rem, 9vw, 4rem);
+  rotate: -5deg;
+}
+.site-loader__word--caps {
+  font-family: var(--f-caps);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  font-size: clamp(2.6rem, 10vw, 4.6rem);
+  margin-block: .1em;
+  overflow: visible;
+}
+/* GOOD se peint lettre à lettre */
+.site-loader__letter {
+  display: inline-block;
+  opacity: 0;
+  translate: 0 .45em;
+  animation: loader-letter 520ms cubic-bezier(0.16, 1, 0.3, 1) calc(200ms + var(--i) * 80ms) forwards;
+}
+.site-loader__word--life .site-loader__inner { animation-delay: 560ms; }
+
+.site-loader__line {
+  display: block;
+  height: 2px;
+  width: min(14rem, 55vw);
+  background: var(--creme);
+  opacity: .5;
+  margin-block: 1.3rem .95rem;
+  scale: 0 1;
+  transform-origin: left center;
+  animation: loader-line 650ms cubic-bezier(0.65, 0, 0.35, 1) 820ms forwards;
+}
+
+.site-loader__sub {
+  color: var(--creme);
+  opacity: 0;
+  animation: loader-fade 500ms linear 1050ms forwards;
+}
+
+@keyframes loader-up     { to { translate: 0 0; } }
+@keyframes loader-letter { to { opacity: 1; translate: 0 0; } }
+@keyframes loader-line   { to { scale: 1 1; } }
+@keyframes loader-fade   { to { opacity: .75; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .site-loader { display: none; }
+}

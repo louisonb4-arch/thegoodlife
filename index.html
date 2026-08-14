@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Good Life — Épicerie fine &amp; coffee shop à Nantes</title>
+  <meta name="description" content="The Good Life, épicerie fine et coffee shop rue Mercœur à Nantes. Environ 400 références choisies une à une, café de spécialité, pâtisseries à l'anglaise et une grande table à partager. Mardi–samedi, 9h–19h.">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+
+  <meta property="og:title" content="The Good Life — Épicerie fine &amp; coffee shop à Nantes">
+  <meta property="og:description" content="Épicerie fine, café de spécialité et pâtisseries à l'anglaise, 17 rue Mercœur à Nantes.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://thegoodlife-site.vercel.app/assets/img/devanture.jpg">
+  <meta property="og:locale" content="fr_FR">
+
+  <link rel="preload" href="assets/fonts/pacifico.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/josefin-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/lora.woff2" as="font" type="font/woff2" crossorigin>
+
+  <link rel="stylesheet" href="assets/css/base/base.css">
+  <link rel="stylesheet" href="assets/css/base/motion.css">
+  <link rel="stylesheet" href="assets/css/ui/site-loader.css">
+  <link rel="stylesheet" href="assets/css/ui/site-nav.css">
+  <link rel="stylesheet" href="assets/css/ui/site-footer.css">
+  <link rel="stylesheet" href="assets/css/components/marquee.css">
+  <link rel="stylesheet" href="assets/css/modules/hero.css">
+  <link rel="stylesheet" href="assets/css/modules/lieu.css">
+  <link rel="stylesheet" href="assets/css/modules/rayons.css">
+  <link rel="stylesheet" href="assets/css/modules/interlude.css">
+  <link rel="stylesheet" href="assets/css/modules/comptoir.css">
+  <link rel="stylesheet" href="assets/css/modules/infos.css">
+  <noscript><style>.site-loader { display: none; }</style></noscript>
+</head>
+<body>
+
+  <!-- Loader — le lettrage de la vitrine se peint -->
+  <div class="site-loader" data-site-loader aria-hidden="true">
+    <div class="site-loader__lockup">
+      <span class="site-loader__word site-loader__word--script"><span class="site-loader__inner">The</span></span>
+      <span class="site-loader__word site-loader__word--caps">
+        <span class="site-loader__letter" style="--i:0">G</span><span class="site-loader__letter" style="--i:1">O</span><span class="site-loader__letter" style="--i:2">O</span><span class="site-loader__letter" style="--i:3">D</span>
+      </span>
+      <span class="site-loader__word site-loader__word--script site-loader__word--life"><span class="site-loader__inner">Life</span></span>
+      <span class="site-loader__line"></span>
+      <span class="site-loader__sub label">Épicerie fine · Coffee shop</span>
+    </div>
+  </div>
+
+  <!-- Header / nav -->
+  <header class="site-nav" data-ui="site-nav">
+    <div class="site-nav__bar">
+      <a class="site-nav__brand script" href="#haut">The Good Life</a>
+      <nav class="site-nav__inline" aria-label="Navigation principale">
+        <a class="site-nav__inline-link label" href="#le-lieu">Le lieu</a>
+        <a class="site-nav__inline-link label" href="#rayons">Les rayons</a>
+        <a class="site-nav__inline-link label" href="#comptoir">Le comptoir</a>
+        <a class="site-nav__inline-link label" href="#infos">Infos</a>
+      </nav>
+      <button class="site-nav__toggle" aria-expanded="false" aria-label="Ouvrir le menu">
+        <span class="site-nav__toggle-line" aria-hidden="true"></span>
+        <span class="site-nav__toggle-line" aria-hidden="true"></span>
+      </button>
+    </div>
+    <div class="site-nav__panel">
+      <nav aria-label="Navigation mobile">
+        <ul class="site-nav__list">
+          <li><a class="site-nav__link" href="#le-lieu"><span class="site-nav__num label" aria-hidden="true">01</span>Le lieu</a></li>
+          <li><a class="site-nav__link" href="#rayons"><span class="site-nav__num label" aria-hidden="true">02</span>Les rayons</a></li>
+          <li><a class="site-nav__link" href="#comptoir"><span class="site-nav__num label" aria-hidden="true">03</span>Le comptoir</a></li>
+          <li><a class="site-nav__link" href="#infos"><span class="site-nav__num label" aria-hidden="true">04</span>Infos pratiques</a></li>
+        </ul>
+      </nav>
+      <p class="site-nav__panel-foot label">17 rue Mercœur, Nantes · mar–sam 9h–19h</p>
+    </div>
+  </header>
+
+  <main id="haut">
+
+    <!-- ============ HERO — LA VITRINE ============ -->
+    <section class="hero" data-module-delay>
+      <div class="hero__stage">
+        <div class="hero__top">
+          <h1 class="hero__lockup" aria-label="The Good Life — épicerie fine et coffee shop à Nantes">
+            <span class="hero__word hero__word--the" data-reveal="mask" aria-hidden="true"><span>The</span></span>
+            <span class="hero__word hero__word--good" data-reveal="mask" aria-hidden="true"><span>Good</span></span>
+            <span class="hero__word hero__word--life" data-reveal="mask" aria-hidden="true"><span>Life</span></span>
+          </h1>
+        </div>
+        <figure class="hero__photo">
+          <img src="assets/img/devanture.jpg" alt="La devanture verte de The Good Life, avec son lettrage peint sur la vitrine" width="1206" height="1480" data-reveal="clip" fetchpriority="high">
+        </figure>
+        <div class="hero__foot">
+          <span class="hero__line shelf-line" data-reveal="line"></span>
+          <p class="hero__pitch" data-reveal>Des produits présentés comme des bijoux, un café de spécialité qu'on sirote à la grande table — derrière la devanture verte de la rue Mercœur.</p>
+          <div class="hero__meta" data-reveal>
+            <p class="hero__meta-item"><span class="label">Adresse</span>17 rue Mercœur, Nantes</p>
+            <p class="hero__meta-item"><span class="label">Ouvert</span>mar–sam · 9h–19h</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Enseigne défilante -->
+      <div class="hero__marquee marquee" data-reveal aria-hidden="true">
+        <div class="marquee__track">
+          <span class="marquee__seq">
+            <span class="marquee__item label">Épicerie fine</span><span class="marquee__dot"></span>
+            <span class="marquee__item marquee__item--script script">coffee shop</span><span class="marquee__dot"></span>
+            <span class="marquee__item label">Rue Mercœur</span><span class="marquee__dot"></span>
+            <span class="marquee__item marquee__item--script script">Nantes</span><span class="marquee__dot"></span>
+            <span class="marquee__item label">Depuis 2022</span><span class="marquee__dot"></span>
+          </span>
+          <span class="marquee__seq">
+            <span class="marquee__item label">Épicerie fine</span><span class="marquee__dot"></span>
+            <span class="marquee__item marquee__item--script script">coffee shop</span><span class="marquee__dot"></span>
+            <span class="marquee__item label">Rue Mercœur</span><span class="marquee__dot"></span>
+            <span class="marquee__item marquee__item--script script">Nantes</span><span class="marquee__dot"></span>
+            <span class="marquee__item label">Depuis 2022</span><span class="marquee__dot"></span>
+          </span>
+        </div>
+      </div>
+      <div class="hero__soubassement" aria-hidden="true"></div>
+    </section>
+
+    <!-- ============ LE LIEU — LE SEUIL ============ -->
+    <section class="lieu section" id="le-lieu" data-module="parallax" data-module-delay data-reveal-group>
+      <div class="container">
+        <header class="section__head">
+          <span class="label" data-reveal>N°01 — Le lieu</span>
+          <h2 class="h-section" data-reveal="mask"><span>La belle vie, <em class="script">tout simplement</em></span></h2>
+        </header>
+
+        <div class="lieu__grid">
+          <div class="lieu__text">
+            <p class="lieu__lead" data-reveal>Derrière la devanture verte du 17 rue Mercœur, Myriam a ouvert The Good Life en février 2022, après vingt-cinq ans passés à vendre de belles choses.</p>
+            <p data-reveal>L'idée&nbsp;: un endroit où l'on vient chercher un produit rare, et où l'on reste pour un café. Entre les murs de pierre et les rayonnages vert bouteille, chaque bocal, chaque bouteille et chaque tablette a été choisie une à une.</p>
+          </div>
+          <figure class="lieu__photo photo">
+            <img src="assets/img/interieur-pierre.jpg" alt="L'intérieur de la boutique : murs de pierre, parquet clair et rayonnages verts remplis de produits fins" width="1206" height="1480" data-reveal="clip" data-parallax="0.12" loading="lazy">
+            <figcaption class="lieu__caption script" aria-hidden="true">la pierre &amp; le vert</figcaption>
+          </figure>
+          <blockquote class="lieu__quote" data-reveal>
+            <p>«&nbsp;Un carrefour de rencontre <em>pour le quartier.</em>&nbsp;»</p>
+            <cite class="label">Myriam, fondatrice</cite>
+          </blockquote>
+        </div>
+
+        <dl class="lieu__stats" data-reveal-group>
+          <div class="lieu__stat">
+            <span class="lieu__stat-line shelf-line" data-reveal="line"></span>
+            <dt class="label" data-reveal>Ouverture</dt>
+            <dd data-reveal>2022</dd>
+          </div>
+          <div class="lieu__stat">
+            <span class="lieu__stat-line shelf-line" data-reveal="line"></span>
+            <dt class="label" data-reveal>Références</dt>
+            <dd data-reveal>≈&nbsp;400</dd>
+          </div>
+          <div class="lieu__stat">
+            <span class="lieu__stat-line shelf-line" data-reveal="line"></span>
+            <dt class="label" data-reveal>De métier</dt>
+            <dd data-reveal>25&nbsp;ans</dd>
+          </div>
+          <div class="lieu__stat">
+            <span class="lieu__stat-line shelf-line" data-reveal="line"></span>
+            <dt class="label" data-reveal>Grande table</dt>
+            <dd data-reveal>1</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- Bande de seuil -->
+    <div class="marquee marquee--seuil" aria-hidden="true">
+      <div class="marquee__track marquee__track--reverse">
+        <span class="marquee__seq">
+          <span class="marquee__item marquee__item--serif">thés</span><span class="marquee__dot"></span>
+          <span class="marquee__item marquee__item--serif">cafés</span><span class="marquee__dot"></span>
+          <span class="marquee__item marquee__item--serif">épices</span><span class="marquee__dot"></span>
+          <span class="marquee__item marquee__item--serif">tartinables</span><span class="marquee__dot"></span>
+          <span class="marquee__item marquee__item--serif">vins</span><span class="marquee__dot"></span>
+          <span class="marquee__item marquee__item--serif">douceurs</span><span class="marquee__dot"></span>
+        </span>
+        <span class="marquee__seq">
+          <span class="marquee__item marquee__item--serif">thés</span><span class="marquee__dot"></span>
+          <span class="marquee__item marquee__item--serif">cafés</span><span class="marquee__dot"></span>
+          <span class="marquee__item marquee__item--serif">épices</span><span class="marquee__dot"></span>
+          <span class="marquee__item marquee__item--serif">tartinables</span><span class="marquee__dot"></span>
+          <span class="marquee__item marquee__item--serif">vins</span><span class="marquee__dot"></span>
+          <span class="marquee__item marquee__item--serif">douceurs</span><span class="marquee__dot"></span>
+        </span>
+      </div>
+    </div>
+
+    <!-- ============ LES RAYONS — L'ÉTAGÈRE ============ -->
+    <section class="rayons" id="rayons" data-module="rayons" data-module-delay>
+      <div class="rayons__sticky">
+        <header class="rayons__head container">
+          <span class="label" data-reveal>N°02 — L'épicerie</span>
+          <h2 class="h-section" data-reveal="mask"><span>Les <em class="script">rayons</em></span></h2>
+          <p class="rayons__hint label" aria-hidden="true">— Faites défiler —</p>
+        </header>
+        <div class="rayons__viewport">
+          <span class="rayons__shelf" aria-hidden="true"></span>
+          <ol class="rayons__track">
+            <li class="etiquette" data-reveal>
+              <span class="etiquette__head label">Rayon n°01</span>
+              <h3 class="etiquette__name">L'apéritif</h3>
+              <p class="etiquette__desc">Tartinables, conserves fines et biscuits salés — de quoi bien commencer la soirée.</p>
+              <p class="etiquette__ex script">rillettes de la mer, olives, gressins</p>
+            </li>
+            <li class="etiquette" data-reveal>
+              <span class="etiquette__head label">Rayon n°02</span>
+              <h3 class="etiquette__name">Épices &amp; condiments</h3>
+              <p class="etiquette__desc">Sels, poivres, huiles et vinaigres qui changent un plat ordinaire en souvenir.</p>
+              <p class="etiquette__ex script">poivres rares, huiles d'olive, moutardes</p>
+            </li>
+            <li class="etiquette" data-reveal>
+              <span class="etiquette__head label">Rayon n°03</span>
+              <h3 class="etiquette__name">Thés &amp; cafés</h3>
+              <p class="etiquette__desc">Cafés de spécialité torréfiés à Nantes, thés fins, chocolat, chaï et matcha.</p>
+              <p class="etiquette__ex script">torréfaction nantaise, grands crus</p>
+            </li>
+            <li class="etiquette" data-reveal>
+              <span class="etiquette__head label">Rayon n°04</span>
+              <h3 class="etiquette__name">Les douceurs</h3>
+              <p class="etiquette__desc">Confitures, miels, chocolats et biscuits — à offrir, ou à s'offrir.</p>
+              <p class="etiquette__ex script">confitures artisanales, miels de caractère</p>
+            </li>
+            <li class="etiquette" data-reveal>
+              <span class="etiquette__head label">Rayon n°05</span>
+              <h3 class="etiquette__name">Vins &amp; spiritueux</h3>
+              <p class="etiquette__desc">Une cave courte et sûre, pour accompagner un repas ou faire un beau cadeau.</p>
+              <p class="etiquette__ex script">vignerons choisis, belles bouteilles</p>
+            </li>
+            <li class="etiquette" data-reveal>
+              <span class="etiquette__head label">Rayon n°06</span>
+              <h3 class="etiquette__name">Le corner italien</h3>
+              <p class="etiquette__desc">Pâtes artisanales, sauces et antipasti — le meilleur de l'Italie, en rayon.</p>
+              <p class="etiquette__ex script">pasta di Gragnano, pesto, antipasti</p>
+            </li>
+            <li class="etiquette etiquette--fin" data-reveal>
+              <p class="etiquette__fin-script script">et tout ce qu'on ne trouve<br>nulle part ailleurs…</p>
+              <p class="etiquette__fin-note">Environ 400 références dénichées dans les salons professionnels, choisies une à une.</p>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ INTERLUDE PHOTOS ============ -->
+    <section class="interlude section" data-module="parallax" data-module-delay data-reveal-group>
+      <div class="container interlude__grid">
+        <figure class="interlude__photo photo">
+          <img src="assets/img/rayon-blanc.jpg" alt="Rayonnages blancs garnis de bocaux de confitures, tartinables et bouteilles de vin" width="1206" height="1480" data-reveal="clip" data-parallax="0.1" loading="lazy">
+          <figcaption class="interlude__caption script" aria-hidden="true">le rayon blanc</figcaption>
+        </figure>
+        <figure class="interlude__photo interlude__photo--decale photo">
+          <img src="assets/img/rayon-table.jpg" alt="La table de présentation en bois au centre des rayonnages vert bouteille" width="1206" height="1480" data-reveal="clip" data-parallax="-0.08" loading="lazy">
+          <figcaption class="interlude__caption interlude__caption--right script" aria-hidden="true">la table du milieu</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============ LE COMPTOIR — LE TICKET ============ -->
+    <section class="comptoir section" id="comptoir" data-module-delay>
+      <div class="container">
+        <header class="section__head" data-reveal-group>
+          <span class="label" data-reveal>N°03 — Le coffee shop</span>
+          <h2 class="h-section" data-reveal="mask"><span>Au <em class="script">comptoir</em></span></h2>
+        </header>
+
+        <div class="comptoir__grid">
+          <div class="comptoir__ticket-zone" data-reveal-group>
+            <div class="ticket" data-reveal="clip">
+              <p class="ticket__brand script">The Good Life</p>
+              <p class="ticket__meta label">17 rue Mercœur — Nantes<br>Comptoir · sur place ou à emporter</p>
+              <span class="ticket__rule" aria-hidden="true"></span>
+              <p class="ticket__cat label">— Les boissons —</p>
+              <ul class="ticket__list">
+                <li><span>Espresso</span><span class="ticket__dots" aria-hidden="true"></span></li>
+                <li><span>Flat white</span><span class="ticket__dots" aria-hidden="true"></span></li>
+                <li><span>Cappuccino</span><span class="ticket__dots" aria-hidden="true"></span></li>
+                <li><span>Latte macchiato</span><span class="ticket__dots" aria-hidden="true"></span></li>
+                <li><span>Chaï latté</span><span class="ticket__dots" aria-hidden="true"></span></li>
+                <li><span>Chocolat chaud</span><span class="ticket__dots" aria-hidden="true"></span></li>
+                <li><span>Matcha fouetté</span><span class="ticket__dots" aria-hidden="true"></span></li>
+                <li><span>Thés fins</span><span class="ticket__dots" aria-hidden="true"></span></li>
+              </ul>
+              <p class="ticket__cat label">— Les douceurs —</p>
+              <ul class="ticket__list">
+                <li><span>Lemon cake</span><span class="ticket__dots" aria-hidden="true"></span></li>
+                <li><span>Carrot cake</span><span class="ticket__dots" aria-hidden="true"></span></li>
+                <li><span>Cookies à l'anglaise</span><span class="ticket__dots" aria-hidden="true"></span></li>
+              </ul>
+              <span class="ticket__rule" aria-hidden="true"></span>
+              <p class="ticket__note">Café de spécialité torréfié à Nantes.<br>Lait d'avoine sur demande.</p>
+              <p class="ticket__merci script">Merci, à bientôt&nbsp;!</p>
+            </div>
+          </div>
+
+          <div class="comptoir__aside">
+            <figure class="photo comptoir__photo">
+              <img src="assets/img/rayon-table.jpg" alt="La grande table de bois entourée des rayonnages de l'épicerie" width="1206" height="1480" data-reveal="clip" loading="lazy">
+            </figure>
+            <p class="comptoir__table-note" data-reveal>Une grande table à partager, au milieu des rayons&nbsp;: on vient pour un espresso, on reste un peu plus longtemps que prévu.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ INFOS — LA PORTE ============ -->
+    <section class="infos section" id="infos" data-module-delay>
+      <div class="container">
+        <header class="section__head" data-reveal-group>
+          <span class="label" data-reveal>N°04 — Infos pratiques</span>
+          <h2 class="h-section" data-reveal="mask"><span>Passer <em class="script">nous voir</em></span></h2>
+        </header>
+
+        <div class="infos__pancartes" data-reveal-group>
+          <div class="pancarte pancarte--ouvert" data-reveal>
+            <span class="pancarte__ficelle" aria-hidden="true"></span>
+            <p class="pancarte__etat script">Ouvert</p>
+            <p class="pancarte__jours label">Mardi — Samedi</p>
+            <p class="pancarte__heures">9h&nbsp;—&nbsp;19h</p>
+          </div>
+          <div class="pancarte pancarte--ferme" data-reveal>
+            <span class="pancarte__ficelle" aria-hidden="true"></span>
+            <p class="pancarte__etat script">Fermé</p>
+            <p class="pancarte__jours label">Dimanche &amp; lundi</p>
+            <p class="pancarte__heures">On se repose</p>
+          </div>
+        </div>
+
+        <div class="infos__grid" data-reveal-group>
+          <div class="infos__bloc">
+            <h3 class="label infos__bloc-title" data-reveal>Adresse</h3>
+            <p class="infos__big" data-reveal>17 rue Mercœur<br>44000 Nantes</p>
+            <p data-reveal><a class="link-u" href="https://maps.google.com/?q=The+Good+Life,+17+rue+Mercoeur,+44000+Nantes" target="_blank" rel="noopener">Voir sur la carte</a></p>
+          </div>
+          <div class="infos__bloc">
+            <h3 class="label infos__bloc-title" data-reveal>Contact</h3>
+            <p class="infos__big" data-reveal><a class="infos__tel" href="tel:+33251724035">02&nbsp;51&nbsp;72&nbsp;40&nbsp;35</a></p>
+            <p data-reveal><a class="link-u" href="https://www.instagram.com/thegoodlife_nantes/" target="_blank" rel="noopener">@thegoodlife_nantes</a></p>
+          </div>
+          <div class="infos__bloc">
+            <h3 class="label infos__bloc-title" data-reveal>Bon à savoir</h3>
+            <p data-reveal>Sans réservation. Entrée et salle accessibles aux personnes à mobilité réduite.</p>
+          </div>
+        </div>
+
+        <p class="infos__sign script" data-reveal>À tout de suite&nbsp;!</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__top">
+        <p class="site-footer__lockup" aria-hidden="true"><span class="script">The</span> <span class="site-footer__good">Good</span> <span class="script">Life</span></p>
+        <p class="site-footer__tag label">Épicerie fine · Coffee shop · Nantes</p>
+      </div>
+      <div class="site-footer__grid">
+        <div class="site-footer__col">
+          <p>17 rue Mercœur, 44000 Nantes</p>
+          <p><a class="link-u" href="tel:+33251724035">02 51 72 40 35</a></p>
+          <p><a class="link-u" href="https://www.instagram.com/thegoodlife_nantes/" target="_blank" rel="noopener">Instagram</a></p>
+        </div>
+        <nav class="site-footer__col" aria-label="Navigation pied de page">
+          <p><a class="link-u" href="#le-lieu">Le lieu</a></p>
+          <p><a class="link-u" href="#rayons">Les rayons</a></p>
+          <p><a class="link-u" href="#comptoir">Le comptoir</a></p>
+        </nav>
+        <div class="site-footer__col">
+          <p><a class="link-u" href="mentions-legales.html">Mentions légales</a></p>
+          <p><a class="link-u" href="mentions-legales.html#confidentialite">Confidentialité &amp; cookies</a></p>
+        </div>
+      </div>
+      <span class="shelf-line site-footer__line" aria-hidden="true"></span>
+      <div class="site-footer__bottom">
+        <p>© 2026 The Good Life</p>
+        <p><a class="link-u" href="https://vokumagency.com" target="_blank" rel="noopener">Création Vokum</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="assets/js/app.js"></script>
+</body>
+</html>

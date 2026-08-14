@@ -1,0 +1,170 @@
+/* Les rayons — l'étagère : étiquettes de bocaux sur une étagère qui défile.
+   Desktop : section épinglée, le rail glisse horizontalement au scroll (JS).
+   Mobile : liste verticale, pas d'épinglage. */
+.rayons {
+  background: var(--vert);
+  color: var(--creme);
+}
+
+.rayons__sticky {
+  display: flex;
+  flex-direction: column;
+  padding-block: clamp(4.5rem, 12vw, 6.5rem) clamp(3rem, 8vw, 4rem);
+}
+
+.rayons__head { width: 100%; }
+.rayons__head .label { display: inline-block; margin-bottom: 1.1rem; color: var(--miel); }
+.rayons__head .h-section .script { color: var(--miel); }
+
+.rayons__hint {
+  display: none;
+  margin-top: 1rem;
+  opacity: .45;
+}
+
+.rayons__viewport {
+  position: relative;
+  margin-top: clamp(2.2rem, 6vw, 3.5rem);
+}
+
+/* la ligne d'étagère continue */
+.rayons__shelf {
+  display: none;
+}
+
+.rayons__track {
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+  padding-inline: var(--gutter);
+}
+
+/* ---- Étiquette de bocal ---- */
+.etiquette {
+  position: relative;
+  background: var(--creme);
+  color: var(--encre);
+  padding: 1.5rem 1.5rem 1.4rem;
+  border-radius: 4px;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, .28);
+  transition: translate 300ms var(--ease-out), box-shadow 300ms linear;
+}
+/* double filet intérieur */
+.etiquette::before {
+  content: "";
+  position: absolute;
+  inset: 7px;
+  border: 1px solid rgba(36, 31, 22, .3);
+  border-radius: 2px;
+  pointer-events: none;
+}
+
+.etiquette:nth-child(odd)  { rotate: -.7deg; }
+.etiquette:nth-child(even) { rotate: .6deg; }
+
+.etiquette:hover {
+  translate: 0 -6px;
+  box-shadow: 0 24px 44px rgba(0, 0, 0, .34);
+}
+
+.etiquette__head {
+  display: block;
+  color: var(--miel);
+  margin-bottom: .7rem;
+}
+.etiquette__name {
+  font-family: var(--f-caps);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  font-size: clamp(1.4rem, 5vw, 1.7rem);
+  line-height: 1.12;
+}
+.etiquette__desc {
+  margin-top: .6rem;
+  font-size: .95rem;
+  opacity: .88;
+}
+.etiquette__ex {
+  margin-top: .9rem;
+  padding-top: .8rem;
+  border-top: 1px dotted rgba(36, 31, 22, .35);
+  font-size: 1.02rem;
+  color: var(--sauge);
+}
+
+/* carte finale — posée sur le vert, sans papier */
+.etiquette--fin {
+  background: none;
+  color: var(--creme);
+  box-shadow: none;
+  padding-block: 1rem;
+}
+.etiquette--fin::before { display: none; }
+.etiquette--fin:hover { translate: none; box-shadow: none; }
+.etiquette__fin-script {
+  font-size: clamp(1.7rem, 6.5vw, 2.4rem);
+  line-height: 1.35;
+  color: var(--miel);
+  rotate: -2deg;
+}
+.etiquette__fin-note {
+  margin-top: 1.1rem;
+  max-width: 22rem;
+  opacity: .85;
+}
+
+/* stagger d'entrée des premières étiquettes */
+.etiquette:nth-child(1) { --self-delay: 0ms; }
+.etiquette:nth-child(2) { --self-delay: 110ms; }
+.etiquette:nth-child(3) { --self-delay: 220ms; }
+
+/* ---- Desktop : épinglage + rail horizontal ---- */
+@media (min-width: 900px) {
+  .rayons { height: calc(100lvh + 2600px); }
+
+  .rayons__sticky {
+    position: sticky;
+    top: 0;
+    height: 100lvh;
+    overflow: hidden;
+    justify-content: center;
+  }
+
+  .rayons__hint { display: block; }
+
+  .rayons__viewport {
+    padding-block: 3.2rem 2rem;
+  }
+
+  .rayons__shelf {
+    display: block;
+    position: absolute;
+    left: 0; right: 0;
+    bottom: 1.2rem;
+    height: 2px;
+    background: var(--creme);
+    opacity: .22;
+  }
+
+  .rayons__track {
+    flex-direction: row;
+    align-items: stretch;
+    gap: 2.2rem;
+    width: max-content;
+    padding-inline: var(--gutter) 8rem;
+    will-change: translate;
+  }
+
+  .etiquette {
+    width: 21.5rem;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .etiquette__ex { margin-top: auto; padding-top: .9rem; }
+  .etiquette--fin {
+    width: 24rem;
+    justify-content: center;
+  }
+}

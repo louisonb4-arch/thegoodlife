@@ -1,0 +1,124 @@
+/* Le lieu — le seuil : pierre, citation-papier posée sur la photo, chiffres en rayon */
+.lieu {
+  background: var(--creme);
+}
+
+.lieu__grid {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+
+.lieu__lead {
+  font-size: clamp(1.2rem, 3.6vw, 1.5rem);
+  line-height: 1.55;
+}
+.lieu__text > p + p { margin-top: 1.2rem; }
+
+/* Citation — papier posé sur la photo */
+.lieu__quote {
+  background: var(--creme);
+  border: 1px solid rgba(36, 31, 22, .18);
+  padding: 1.6rem 1.7rem;
+  rotate: -1.4deg;
+  box-shadow: 0 18px 40px rgba(36, 31, 22, .14);
+  width: fit-content;
+  max-width: 24rem;
+  margin-top: -3.2rem;
+  margin-inline: 1rem;
+  position: relative;
+  z-index: 2;
+}
+.lieu__quote p {
+  font-family: var(--f-body);
+  font-style: italic;
+  font-size: clamp(1.3rem, 4.4vw, 1.7rem);
+  line-height: 1.35;
+}
+.lieu__quote em { color: var(--miel); }
+.lieu__quote cite {
+  display: block;
+  margin-top: .8rem;
+  font-style: normal;
+  color: var(--miel);
+}
+
+/* débord interne pour la parallaxe — jamais de scale */
+.lieu__photo {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1206 / 1480;
+  border-radius: 8px;
+}
+.lieu__photo img {
+  position: absolute;
+  top: -34px;
+  left: 0;
+  width: 100%;
+  height: calc(100% + 68px);
+  object-fit: cover;
+}
+.lieu__caption {
+  position: absolute;
+  right: 1rem;
+  bottom: .9rem;
+  z-index: 2;
+  color: var(--creme);
+  font-size: 1.15rem;
+  rotate: -4deg;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, .5);
+}
+
+/* ---- Chiffres sur lignes d'étagère ---- */
+.lieu__stats {
+  margin-top: clamp(3rem, 9vw, 5.5rem);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem 2.4rem;
+}
+.lieu__stat { position: relative; padding-top: .9rem; }
+.lieu__stat-line {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  opacity: .25;
+}
+.lieu__stat dt { color: var(--miel); margin-bottom: .35rem; }
+.lieu__stat dd {
+  font-family: var(--f-caps);
+  font-weight: 600;
+  font-size: clamp(2.2rem, 8vw, 3.6rem);
+  line-height: 1;
+  letter-spacing: .02em;
+}
+
+/* cascade interne des stats */
+.lieu__stat:nth-child(1) [data-reveal] { --local-offset: 0ms; }
+.lieu__stat:nth-child(2) [data-reveal] { --local-offset: 120ms; }
+.lieu__stat:nth-child(3) [data-reveal] { --local-offset: 240ms; }
+.lieu__stat:nth-child(4) [data-reveal] { --local-offset: 360ms; }
+.lieu__stat dt { --self-delay: 150ms; }
+.lieu__stat dd { --self-delay: 260ms; }
+
+/* ---- Desktop : photo droite, citation à cheval, texte gauche ---- */
+@media (min-width: 900px) {
+  .lieu__grid {
+    display: grid;
+    grid-template-columns: 5fr 6fr;
+    column-gap: 5rem;
+    align-items: start;
+    padding-bottom: 3rem;
+  }
+  .lieu__text { grid-column: 1; padding-top: 1.5rem; }
+  .lieu__photo { grid-column: 2; grid-row: 1 / span 2; }
+  .lieu__quote {
+    grid-column: 1;
+    position: absolute;
+    left: 34%;
+    bottom: 0;
+    margin: 0;
+    z-index: 3;
+  }
+  .lieu__stats { grid-template-columns: repeat(4, 1fr); }
+  .lieu .section__head { max-width: 62rem; }
+}

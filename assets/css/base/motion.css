@@ -1,0 +1,142 @@
+/* =========================================================================
+   THE GOOD LIFE — système de motion
+   Geste du projet : « la mise en rayon » — les éléments se posent sur les
+   lignes d'étagère, glissés depuis le côté ou montés depuis le bas.
+   ========================================================================= */
+
+:root {
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-io:  cubic-bezier(0.65, 0, 0.35, 1);
+
+  --dur-fast: 250ms;
+  --dur-base: 600ms;
+  --dur-slow: 950ms;
+
+  --stagger-base: 1450ms; /* après le lettrage du loader */
+  --stagger-step: 320ms;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --dur-base: 480ms; --dur-slow: 700ms;
+    --stagger-step: 200ms;
+  }
+}
+
+/* ---- Délais composables ---- */
+[data-module-delay] { --module-delay: 0ms; }
+
+[data-reveal], [data-split] {
+  --column-delay: 0ms;
+  --self-delay:   0ms;
+  --local-offset: 0ms;
+  --index:        0;
+  --stagger:      0ms;
+  --delay: calc(
+    var(--module-delay, 0ms) + var(--column-delay, 0ms) + var(--self-delay, 0ms)
+    + var(--index, 0) * var(--stagger, 0ms) + var(--local-offset, 0ms)
+  );
+}
+
+[data-module-delay] > [data-reveal]:nth-child(2) { --self-delay:  90ms; }
+[data-module-delay] > [data-reveal]:nth-child(3) { --self-delay: 180ms; }
+[data-module-delay] > [data-reveal]:nth-child(4) { --self-delay: 270ms; }
+[data-module-delay] > [data-reveal]:nth-child(5) { --self-delay: 360ms; }
+[data-module-delay] > [data-reveal]:nth-child(6) { --self-delay: 450ms; }
+
+/* ---- Keyframes ---- */
+@keyframes v-fade      { from { opacity: 0; } }
+@keyframes v-translate { from { translate: var(--tx, 0px) var(--ty, 0px); } }
+@keyframes v-scaleX    { from { scale: var(--sx, 1) 1; } }
+
+@keyframes v-clip {
+  from { clip-path: inset(var(--top, 0%) var(--right, 0%) var(--bottom, 0%) var(--left, 0%) round var(--radius, 8px)); }
+  to   { clip-path: inset(0% 0% 0% 0% round var(--radius, 8px)); }
+}
+
+/* ---- États initiaux — seulement si le JS est là ---- */
+html.--js-inview-enabled [data-reveal] {
+  --ty: 1.5rem;
+  animation:
+    v-translate var(--dur-base, 600ms) var(--ease-out, ease) var(--delay, 0ms) backwards,
+    v-fade      var(--dur-base, 600ms) linear                var(--delay, 0ms) backwards;
+  animation-play-state: paused, paused;
+}
+html.--js-inview-enabled [data-reveal].is-inview {
+  animation-play-state: running, running;
+}
+
+/* a. Masque overflow — l'enfant monte (ou glisse) */
+html.--js-inview-enabled [data-reveal="mask"] {
+  overflow: hidden;
+  animation: none;
+}
+html.--js-inview-enabled [data-reveal="mask"] > * {
+  display: block;
+  --tx: 0px;
+  --ty: 100%;
+  animation: v-translate var(--dur-slow, 950ms) var(--ease-out, ease) var(--delay, 0ms) backwards;
+  animation-play-state: paused;
+}
+html.--js-inview-enabled [data-reveal="mask"].is-inview > * {
+  animation-play-state: running;
+}
+
+/* b. clip-path — révéler une photo sans scale.
+   ⚠ élément entièrement clippé à la frame 0 : l'IO observe le parent
+   [data-reveal-group], jamais cet élément. */
+html.--js-inview-enabled [data-reveal="clip"] {
+  --top: 0%; --right: 0%; --bottom: 100%; --left: 0%;
+  animation: v-clip var(--dur-slow, 950ms) var(--ease-out, ease) var(--delay, 0ms) backwards;
+  animation-play-state: paused;
+}
+html.--js-inview-enabled [data-reveal="clip"].is-inview {
+  animation-play-state: running;
+}
+
+/* c. Trait d'étagère qui se pose */
+html.--js-inview-enabled [data-reveal="line"] {
+  --sx: 0;
+  transform-origin: left center;
+  animation: v-scaleX var(--dur-slow, 950ms) var(--ease-io, ease) var(--delay, 0ms) backwards;
+  animation-play-state: paused;
+}
+html.--js-inview-enabled [data-reveal="line"].is-inview {
+  animation-play-state: running;
+}
+
+/* ---- Stagger typographique — masque par mot ---- */
+.word {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+}
+.word__inner { display: inline-block; }
+
+html.--js-inview-enabled [data-split] .word__inner {
+  --ty: 110%;
+  animation: v-translate var(--dur-slow, 950ms) var(--ease-out, ease)
+             calc(var(--delay, 0ms) + var(--word-index, 0) * var(--word-stagger, 55ms)) backwards;
+  animation-play-state: paused;
+}
+html.--js-inview-enabled [data-split].is-inview .word__inner {
+  animation-play-state: running;
+}
+
+/* ---- Accessibilité — dernier mot ---- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  html [data-reveal],
+  html [data-reveal] > *,
+  html [data-split] .word__inner {
+    animation: none !important;
+    opacity: 1 !important;
+    translate: none !important;
+    clip-path: none !important;
+  }
+}

@@ -1,0 +1,108 @@
+/* Infos — la porte : pancartes suspendues, coordonnées, au revoir */
+.infos {
+  background: var(--creme);
+}
+
+/* ---- Pancartes ---- */
+.infos__pancartes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.4rem 3.5rem;
+  margin-bottom: clamp(3rem, 8vw, 5rem);
+  padding-top: 2.6rem;
+}
+
+.pancarte {
+  position: relative;
+  width: min(16.5rem, 100%);
+  padding: 1.7rem 1.6rem 1.9rem;
+  text-align: center;
+  border-radius: 5px;
+  transition: rotate 400ms var(--ease-out);
+}
+.pancarte--ouvert {
+  background: var(--creme);
+  border: 1px solid rgba(36, 31, 22, .25);
+  box-shadow: 0 16px 36px rgba(36, 31, 22, .14);
+  rotate: -2deg;
+}
+.pancarte--ferme {
+  background: var(--vert);
+  color: var(--creme);
+  box-shadow: 0 16px 36px rgba(36, 31, 22, .2);
+  rotate: 2.2deg;
+}
+.pancarte:hover { rotate: 0deg; }
+
+/* la ficelle */
+.pancarte__ficelle {
+  position: absolute;
+  left: 50%;
+  bottom: 100%;
+  width: 1px;
+  height: 2.4rem;
+  background: rgba(36, 31, 22, .45);
+}
+.pancarte__ficelle::before {
+  content: "";
+  position: absolute;
+  top: -4px; left: -3px;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--miel);
+}
+
+.pancarte__etat {
+  font-size: 2rem;
+  color: var(--miel);
+  rotate: -2deg;
+}
+.pancarte__jours {
+  margin-top: .7rem;
+  opacity: .75;
+}
+.pancarte__heures {
+  margin-top: .4rem;
+  font-family: var(--f-caps);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  font-size: 1.5rem;
+}
+
+/* ---- Coordonnées ---- */
+.infos__grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+.infos__bloc-title {
+  display: block;
+  color: var(--miel);
+  margin-bottom: 1rem;
+}
+.infos__big {
+  font-family: var(--f-caps);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  font-size: clamp(1.3rem, 4.5vw, 1.7rem);
+  line-height: 1.4;
+  margin-bottom: .8rem;
+}
+.infos__tel { text-decoration: none; }
+
+.infos__sign {
+  margin-top: clamp(3rem, 9vw, 5.5rem);
+  font-size: clamp(2.4rem, 10vw, 4.2rem);
+  color: var(--miel);
+  rotate: -4deg;
+  width: fit-content;
+}
+
+@media (min-width: 900px) {
+  .infos__pancartes { gap: 4.5rem; }
+  .infos__grid { flex-direction: row; gap: 4rem; }
+  .infos__bloc { flex: 1; }
+  .infos__sign { margin-inline: auto; }
+}
