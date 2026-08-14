@@ -32,7 +32,7 @@
 .hero__word--the,
 .hero__word--life {
   font-family: var(--f-script);
-  font-size: clamp(3rem, 12vw, 6.2rem);
+  font-size: clamp(2.6rem, 10.5vw, 6.2rem);
   rotate: -5deg;
   line-height: 1.3;
 }
@@ -42,8 +42,8 @@
   font-family: var(--f-caps);
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: .08em;
-  font-size: clamp(4.6rem, 21vw, 13rem);
+  letter-spacing: .07em;
+  font-size: clamp(4rem, 18.5vw, 13rem);
   line-height: 1.02;
   margin-block: .02em;
 }
@@ -52,9 +52,7 @@
   text-shadow: .045em .05em 0 rgba(190, 138, 62, .55);
 }
 
-.hero__word--life { margin-left: 1.15em; margin-top: -.08em; }
-/* lisibilité quand le mot passe sur la photo (mobile) */
-.hero__word--life > span { text-shadow: 0 2px 18px rgba(0, 0, 0, .35); }
+.hero__word--life { margin-left: .65em; margin-top: -.1em; }
 
 /* Ordre de la cascade d'ouverture */
 .hero__word--the  { --self-delay: 0ms; }
@@ -66,27 +64,26 @@
 .hero__photo img  { --self-delay: 420ms; }
 .hero__marquee    { --self-delay: 900ms; }
 
-/* ---- Photo — le lockup déborde dessus ---- */
+/* ---- Photo — mobile : image de clôture du hero, pleine largeur ---- */
 .hero__photo {
   position: relative;
   z-index: 1;
-  margin: -2.6rem var(--gutter) 0;
+  order: 3;
+  margin: 1.8rem 0 0;
 }
 .hero__photo img {
-  border-radius: 8px;
-  --radius: 8px;
+  --radius: 0px;
   width: 100%;
-  max-height: 46svh;
+  max-height: 40svh;
   object-fit: cover;
-  object-position: center 30%;
+  object-position: center 32%;
 }
 
 /* ---- Pied ---- */
 .hero__foot {
   position: relative;
   z-index: 2;
-  padding: 1.6rem var(--gutter) 1.8rem;
-  margin-top: auto;
+  padding: 1.4rem var(--gutter) 0;
 }
 .hero__line {
   max-width: 30rem;
@@ -95,7 +92,7 @@
 }
 .hero__pitch {
   max-width: 26rem;
-  font-size: 1rem;
+  font-size: .95rem;
   opacity: .9;
 }
 .hero__meta {
@@ -115,8 +112,8 @@
 /* ---- Enseigne défilante ---- */
 .hero__marquee {
   border-top: 1px solid rgba(245, 239, 226, .18);
-  padding-block: .85rem;
-  font-size: .8rem;
+  padding-block: .7rem;
+  font-size: .7rem;
 }
 
 /* ---- Soubassement — panneaux bois de la devanture ---- */

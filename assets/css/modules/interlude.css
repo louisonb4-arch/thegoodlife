@@ -7,7 +7,15 @@
 .interlude__grid {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.6rem;
+}
+
+/* mobile : diptyque décalé — 2e photo plus étroite, alignée à droite */
+@media (max-width: 899px) {
+  .interlude__photo--decale {
+    width: 84%;
+    align-self: flex-end;
+  }
 }
 
 /* débord interne pour la parallaxe — jamais de scale */

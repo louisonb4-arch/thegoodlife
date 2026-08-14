@@ -17,26 +17,46 @@
 .rayons__head .h-section .script { color: var(--miel); }
 
 .rayons__hint {
-  display: none;
+  display: block;
   margin-top: 1rem;
   opacity: .45;
 }
+.rayons__hint-scroll { display: none; }
+@media (min-width: 900px) {
+  .rayons__hint-touch { display: none; }
+  .rayons__hint-scroll { display: inline; }
+}
 
+/* Mobile : l'étagère se fait glisser au doigt — rail natif avec snap */
 .rayons__viewport {
   position: relative;
   margin-top: clamp(2.2rem, 6vw, 3.5rem);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  padding-bottom: 1.6rem;
 }
+.rayons__viewport::-webkit-scrollbar { display: none; }
 
-/* la ligne d'étagère continue */
-.rayons__shelf {
-  display: none;
-}
+/* mobile : la ligne d'étagère vit dans le rail (elle défile avec lui) */
+.rayons__shelf { display: none; }
 
 .rayons__track {
+  position: relative;
   display: flex;
-  flex-direction: column;
-  gap: 1.3rem;
-  padding-inline: var(--gutter);
+  align-items: stretch;
+  gap: 1.1rem;
+  width: max-content;
+  padding-inline: var(--gutter) 3rem;
+  padding-bottom: 1rem;
+}
+.rayons__track::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 2px;
+  background: var(--creme);
+  opacity: .22;
 }
 
 /* ---- Étiquette de bocal ---- */
@@ -44,6 +64,11 @@
   position: relative;
   background: var(--creme);
   color: var(--encre);
+  width: min(76vw, 21rem);
+  flex-shrink: 0;
+  scroll-snap-align: center;
+  display: flex;
+  flex-direction: column;
   padding: 1.5rem 1.5rem 1.4rem;
   border-radius: 4px;
   box-shadow: 0 14px 34px rgba(0, 0, 0, .28);
@@ -86,12 +111,13 @@
   opacity: .88;
 }
 .etiquette__ex {
-  margin-top: .9rem;
+  margin-top: auto;
   padding-top: .8rem;
   border-top: 1px dotted rgba(36, 31, 22, .35);
   font-size: 1.02rem;
   color: var(--sauge);
 }
+.etiquette__desc { margin-bottom: .9rem; }
 
 /* carte finale — posée sur le vert, sans papier */
 .etiquette--fin {
@@ -99,6 +125,7 @@
   color: var(--creme);
   box-shadow: none;
   padding-block: 1rem;
+  justify-content: center;
 }
 .etiquette--fin::before { display: none; }
 .etiquette--fin:hover { translate: none; box-shadow: none; }
@@ -119,7 +146,7 @@
 .etiquette:nth-child(2) { --self-delay: 110ms; }
 .etiquette:nth-child(3) { --self-delay: 220ms; }
 
-/* ---- Desktop : épinglage + rail horizontal ---- */
+/* ---- Desktop : épinglage + rail horizontal scrubbé ---- */
 @media (min-width: 900px) {
   .rayons { height: calc(100lvh + 2600px); }
 
@@ -131,9 +158,9 @@
     justify-content: center;
   }
 
-  .rayons__hint { display: block; }
-
   .rayons__viewport {
+    overflow-x: visible;
+    scroll-snap-type: none;
     padding-block: 3.2rem 2rem;
   }
 
@@ -148,23 +175,13 @@
   }
 
   .rayons__track {
-    flex-direction: row;
-    align-items: stretch;
     gap: 2.2rem;
-    width: max-content;
     padding-inline: var(--gutter) 8rem;
+    padding-bottom: 0;
     will-change: translate;
   }
+  .rayons__track::after { display: none; }
 
-  .etiquette {
-    width: 21.5rem;
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: column;
-  }
-  .etiquette__ex { margin-top: auto; padding-top: .9rem; }
-  .etiquette--fin {
-    width: 24rem;
-    justify-content: center;
-  }
+  .etiquette { width: 21.5rem; }
+  .etiquette--fin { width: 24rem; }
 }

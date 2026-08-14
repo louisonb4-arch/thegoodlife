@@ -67,6 +67,11 @@
   :root { --gutter: 4rem; }
 }
 
+/* Mobile : échelle typographique réduite — jamais un desktop rétréci */
+@media (max-width: 899px) {
+  :root { --fs-body: 1rem; }
+}
+
 /* ---- Reset ---- */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -114,6 +119,7 @@ button {
   letter-spacing: .34em;
   text-transform: uppercase;
 }
+
 
 /* Mot script — comme « The » et « Life » du lettrage */
 .script {
@@ -198,6 +204,13 @@ button {
 :focus-visible {
   outline: 2px solid var(--miel);
   outline-offset: 3px;
+}
+
+/* ---- Ajustements mobiles globaux ---- */
+@media (max-width: 899px) {
+  .label { font-size: .64rem; letter-spacing: .24em; }
+  .section { padding-block: clamp(3.5rem, 11vw, 5rem); }
+  .section__head { margin-bottom: clamp(1.8rem, 6vw, 2.6rem); }
 }
 
 /* ---- Grain papier — texture globale très légère ---- */
